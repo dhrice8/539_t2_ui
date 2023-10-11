@@ -1,9 +1,21 @@
-body {
-  background: #00f3ff;
+/* body {
+  background: #2d1aa8;
   background-size: 200% 200%;
   animation: gradientBG 15s infinite;
-  color: #f0f0f0; /* Lighter text color for better visibility */
+  color: #4320a4;
+  /* Lighter text color for better visibility */
+/* font-family: 'Orbitron', sans-serif;
+}  */
+
+
+html,
+body {
+  height: 100%;
+  background: #a5cca4;
+  color: #4320a4;
   font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 .App {
@@ -11,33 +23,40 @@ body {
   margin: 50px auto;
   padding: 20px;
   border-radius: 8px;
-  background-color: #f0f0f0; 
-  box-shadow: 0 0 15px #00f3ff; 
+  /* background-color: #1d8fac; */
+  background: url(../public/background.png);
+  /* box-shadow: 0 0 15px #00f3ff; */
 }
 
-input, button {
-  border-radius: 0; 
+
+
+input,
+button {
+  border-radius: 0;
 }
 
 input {
   border: 1px solid #f0f0f0;
-  background-color: #f0f0f0; 
-  color: #f0f0f0; 
+  background-color: #f0f0f0;
+  color: #f0f0f0;
 }
+
 button {
-  background-color: #00f3ff; 
+  background-color: #00f3ff;
   border-color: #00f3ff;
   color: #121212;
   cursor: pointer;
 }
 
+
 button:hover {
-  background-color: #00c2d1; 
+  background-color: #00c2d1;
   border-color: #00c2d1;
 }
 
 a {
-  color: #00f3ff; /* Neon blue for links */
+  color: #00f3ff;
+  /* Neon blue for links */
 }
 
 a:hover {
@@ -48,12 +67,16 @@ a:hover {
   0% {
     background-position: 0% 50%;
   }
+
   50% {
     background-position: 100% 50%;
   }
+
   100% {
     background-position: 0% 50%;
   }
 }
 
-
+.justify-end {
+  justify-content: flex-end !important;
+}

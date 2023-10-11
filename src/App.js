@@ -21,8 +21,32 @@ function App() {
   };
 
   return (
-    <div className="App container mt-5">
-      <h1 className="text-center mb-4">URL Shortener</h1>
+    <>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <a className="navbar-brand font-weight-bolder" href="#">IntellectCraft Titans</a>
+      <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span className="navbar-toggler-icon"></span>
+      </button>
+      <div className="collapse navbar-collapse justify-end" id="navbarNav">
+        <ul className="navbar-nav ml-auto">
+          <li className="nav-item">
+            <a className="nav-link" >Features</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" >Plans</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" >Sign In</a>
+          </li>
+          <li className="nav-item">
+            <a className="nav-link" >Sign Up</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div className="App container">
+      <h1 className="text-center mb-4 text-white">URL Shortener</h1>
       <div className="input-group mb-3">
         <input 
           type="url" 
@@ -32,7 +56,7 @@ function App() {
           onChange={(e) => setLongUrl(e.target.value)}
         />
         <div className="input-group-append">
-          <button className="btn btn-primary" onClick={handleSubmit}>Shorten</button>
+          <button className="btn btn-secondary" onClick={handleSubmit}>Shorten</button>
         </div>
       </div>
       {shortUrl && <div className="text-center mt-3">Short URL: <a href={shortUrl}>{shortUrl}</a></div>}
@@ -43,7 +67,7 @@ function App() {
 
       {showDashboard && (
         <div className="dashboard mt-4">
-          <h2 className="text-center mb-4">Dashboard</h2>
+          <h2 className="text-center mb-4 text-white">Dashboard</h2>
           <table className="table">
             <thead>
               <tr>
@@ -64,9 +88,14 @@ function App() {
               ))}
             </tbody>
           </table>
+          <div className="text-right">
+              <button className="btn btn-secondary btn-sm">Download as csv file</button>
+          </div>
+
         </div>
       )}
     </div>
+    </>
   );
 }
 
