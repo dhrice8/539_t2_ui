@@ -7,8 +7,8 @@ function App() {
   const [showDashboard, setShowDashboard] = useState(false);
 
   const data = [
-    { id: 1, url: 'https://www.google.com/', latency: '23ms', clickRate: 34 },
-    { id: 2, url: 'https://www.wikipedia.org/', latency: '19ms', clickRate: 48 },
+    { id: 1, url: 'https://qwklnk.qSdfg67e', latency: '23ms', clickRate: 34 },
+    { id: 2, url: 'https://qwklnk.dyLi24aH', latency: '19ms', clickRate: 48 },
     //... other rows
   ];
 
