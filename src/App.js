@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
+import { urlShortenerApi } from './urlShortnerApi';
 
 function App() {
   const [longUrl, setLongUrl] = useState('');
@@ -13,7 +14,12 @@ function App() {
   ];
 
   const handleSubmit = async () => {
-    // shortening logic
+    try{
+      const shortUrlResponse = await urlShortenerApi(longUrl);
+      setShortUrl(shortUrlResponse);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const toggleDashboard = () => {
