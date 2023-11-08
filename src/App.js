@@ -1,22 +1,32 @@
 import React, { useState } from 'react';
 import './App.css';
 import { urlShortenerApi } from './urlShortnerApi';
+import { fetchBarcode } from './fetchBarcode';
 
 function App() {
   const [longUrl, setLongUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
   const [showDashboard, setShowDashboard] = useState(false);
-
-  const data = [
-    { id: 1, url: 'https://qwklnk.qSdfg67e', latency: '23ms', clickRate: 34 },
-    { id: 2, url: 'https://qwklnk.dyLi24aH', latency: '19ms', clickRate: 48 },
-    //... other rows
-  ];
+  const [data, setData] = useState([]); 
+  const [imageUrl, setImageUrl] = useState([]);
 
   const handleSubmit = async () => {
     try{
       const shortUrlResponse = await urlShortenerApi(longUrl);
       setShortUrl(shortUrlResponse);
+
+      const fetchBarcodeResponse = await fetchBarcode(longUrl);
+      const newRow = {
+        id: data.length + 1,
+        url: shortUrlResponse,
+        //random data
+        latency: `${Math.floor(Math.random() * 100) + 1}ms`,
+        clickRate: 1,
+        qrCode: fetchBarcodeResponse
+      };
+      setData([...data, newRow]);
+
+
     } catch (error) {
       console.log(error);
     }
@@ -65,7 +75,7 @@ function App() {
           <button className="btn btn-secondary" onClick={handleSubmit}>Shorten</button>
         </div>
       </div>
-      {shortUrl && <div className="text-center mt-3">Short URL: <a href={shortUrl}>{shortUrl}</a></div>}
+      {shortUrl && <div className="text-center mt-3"><div className='short-url'>Short URL:</div> <a href={shortUrl}>{shortUrl}</a></div>}
       
       <button className="btn btn-secondary mt-3" onClick={toggleDashboard}>
         {showDashboard ? 'Hide' : 'Show'} Dashboard
@@ -81,6 +91,7 @@ function App() {
                 <th scope="col">Short URL</th>
                 <th scope="col">Latency</th>
                 <th scope="col">Click Rate</th>
+                <th scope="col">QR Code</th>
               </tr>
             </thead>
             <tbody>
@@ -90,6 +101,7 @@ function App() {
                   <td><a href={row.url}>{row.url}</a></td>
                   <td>{row.latency}</td>
                   <td>{row.clickRate}</td>
+                  <td><img src={row.qrCode}></img></td>
                 </tr>
               ))}
             </tbody>

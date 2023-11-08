@@ -1,19 +1,19 @@
 export const urlShortenerApi = async(longUrl) => {
     try{
-        const response = await fetch('backend api', {
+        // const encodedURL = encodeURIComponent(longUrl);
+        const response = await fetch(`http://localhost:8080/api/longurl/${longUrl}`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({longUrl})
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ longUrl }),
         });
         
         if (response.ok) {
-            // assume that the return of api is plain text
             const shortUrl = await response.text();
-
-            // assume that the return of api is JSON
-            // const shortUrl = await response.json();
+            console.log(
+                "response", response
+            );
 
             return shortUrl;
         }
