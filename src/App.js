@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { urlShortenerApi } from './urlShortnerApi';
 import { fetchBarcode } from './fetchBarcode';
+import { GoogleLogin } from 'react-google-login';
 
 function App() {
   const [longUrl, setLongUrl] = useState('');
@@ -36,6 +37,12 @@ function App() {
     setShowDashboard(!showDashboard);
   };
 
+  // Google OAuth 
+  const responseGoogle = (response) => {
+    console.log('Google login response:', response);
+    
+  };
+
   return (
     <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -51,11 +58,17 @@ function App() {
           <li className="nav-item">
             <a className="nav-link" >Plans</a>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <a className="nav-link" >Sign In</a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" >Sign Up</a>
+          </li> */}
+          <li className="nav-item"> {/* Google Login */}
+            <GoogleLogin
+              clientId="Replace with GOOGLE_CLIENT_ID"
+              buttonText="Sign Up/Sign In"
+              onSuccess={responseGoogle}
+              onFailure={responseGoogle}
+              cookiePolicy={'single_host_origin'}
+            />
           </li>
         </ul>
       </div>
