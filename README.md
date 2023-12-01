@@ -10,10 +10,12 @@ In the project directory, you can run:
 
 ### Second `npm install react-router-dom`
 
-### Third `npm install react-google-login` or try `npm install react-google-login --force` 
-This will install Google Sign-In Library, it is expecting of React version 16 or 17, but our project is using React version 18.2.
+### Third `npm install gapi-script react-google-login --force`
+Install Google Sign-In Library along with gapi script
 
-### Fourth `npm start`
+### Fourth `npm install react-router-dom`
+
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.

@@ -1,8 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { urlShortenerApi } from './urlShortnerApi';
 import { fetchBarcode } from './fetchBarcode';
 import { GoogleLogin } from 'react-google-login';
+
+import "./login"
+import "./logout"
+import { gapi } from "gapi-script"
+import Login from './login';
+import Logout from './logout';
+
+const clientId = "904917579142-vc1lop92kollnuspfcvdpk26e87kb5u2.apps.googleusercontent.com"
 
 function App() {
   const [longUrl, setLongUrl] = useState('');
@@ -43,10 +51,20 @@ function App() {
     
   };
 
+  useEffect(()=> {
+    function start(){
+      gapi.client.init({
+        clientId: clientId,
+        scope: "profile"
+      })
+    };
+    gapi.load('client:auth2', start)
+  });
+
   return (
     <>
     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <a className="navbar-brand font-weight-bolder" href="#">IntellectCraft Titans</a>
+      <a className="navbar-brand font-weight-bolder" href="#">&nbsp;IntellectCraft Titans</a>
       <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span className="navbar-toggler-icon"></span>
       </button>
@@ -61,15 +79,9 @@ function App() {
           {/* <li className="nav-item">
             <a className="nav-link" >Sign In</a>
           </li> */}
-          <li className="nav-item"> {/* Google Login */}
-            <GoogleLogin
-              clientId="Replace with GOOGLE_CLIENT_ID"
-              buttonText="Sign Up/Sign In"
-              onSuccess={responseGoogle}
-              onFailure={responseGoogle}
-              cookiePolicy={'single_host_origin'}
-            />
-          </li>
+          
+          <Login />
+          <Logout />
         </ul>
       </div>
     </nav>
