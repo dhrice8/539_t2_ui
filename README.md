@@ -10,7 +10,12 @@ In the project directory, you can run:
 
 ### Second `npm install react-router-dom`
 
-### Third `npm start`
+### Third `npm install gapi-script react-google-login --force`
+Install Google Sign-In Library along with gapi script
+
+### Fourth `npm install react-router-dom`
+
+### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
