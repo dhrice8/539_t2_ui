@@ -4,9 +4,11 @@ export const urlShortenerApi = async(longUrl) => {
         const response = await fetch(`http://localhost:8080/api/longurl/${longUrl}`, {
             method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/x-www-form-urlencoded',
       },
-      body: JSON.stringify({ longUrl }),
+      body: new URLSearchParams({
+        'longurl': JSON.stringify({ longUrl }),
+        }),
         });
         
         if (response.ok) {
