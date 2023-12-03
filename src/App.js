@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { urlShortenerApi } from './urlShortnerApi';
-import { login_test } from './login_test';
 import { fetchBarcode } from './fetchBarcode';
 import { GoogleLogin } from 'react-google-login';
 import { useHistory } from 'react-router-dom';
@@ -36,16 +35,6 @@ function App() {
       };
       setData([...data, newRow]);
 
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const handleLogin = async () => {
-    try{
-      console.log("inside")
-      const loginResponse = await login_test();
 
     } catch (error) {
       console.log(error);
@@ -109,9 +98,6 @@ function App() {
         />
         <div className="input-group-append">
           <button className="btn btn-secondary" onClick={handleSubmit}>Shorten</button>
-        </div>
-        <div className="input-group-append">
-          <button className="btn btn-secondary" onClick={handleLogin}>Login</button>
         </div>
       </div>
       {shortUrl && <div className="text-center mt-3"><div className='short-url'>Short URL:</div> <a href={shortUrl}>{shortUrl}</a></div>}
