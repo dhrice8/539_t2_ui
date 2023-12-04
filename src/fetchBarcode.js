@@ -1,10 +1,13 @@
-export const fetchBarcode = async (longUrl) => {
+//import { useSelector } from 'react-redux';
+
+export const fetchBarcode = async (longUrl, accessToken) => {
+  //const accessToken = useSelector((state) => state.auth.accessToken); 
     try {
       const response = await fetch(`http://localhost:8080/api/barcode/${longUrl}`, {
         method: 'GET',
   headers: {
 
-    'Authorization': 'Bearer '
+    'Authorization': `Bearer ${accessToken}` 
   }});
       if (response.ok) {
         const blob = await response.blob();

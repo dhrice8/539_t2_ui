@@ -1,4 +1,8 @@
-export const urlShortenerApi = async(longUrl) => {
+//import { useSelector } from 'react-redux';
+
+export const urlShortenerApi = async(longUrl, accessToken) => {
+    //const accessToken = useSelector((state) => state.auth.accessToken);
+
     try{
         // const encodedURL = encodeURIComponent(longUrl);
         const response = await fetch(`http://localhost:8080/api/longurl/${longUrl}`, {
@@ -6,7 +10,7 @@ export const urlShortenerApi = async(longUrl) => {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         // "Access-Control-Allow-Origin": "*",
-        'Authorization': 'Bearer '
+        'Authorization': `Bearer ${accessToken}` 
       },
       body: new URLSearchParams({
         'longurl': JSON.stringify({ longUrl }),

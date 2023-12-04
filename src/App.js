@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import './App.css';
 import { urlShortenerApi } from './urlShortnerApi';
 import { fetchBarcode } from './fetchBarcode';
@@ -19,12 +20,15 @@ function App() {
   const [data, setData] = useState([]); 
   const [imageUrl, setImageUrl] = useState([]);
 
+  const accessToken = useSelector((state) => state.auth.accessToken);
+  console.log('accessToken:', accessToken);
+
   const handleSubmit = async () => {
     try{
-      const shortUrlResponse = await urlShortenerApi(longUrl);
+      const shortUrlResponse = await urlShortenerApi(longUrl, accessToken);
       setShortUrl(shortUrlResponse);
 
-      const fetchBarcodeResponse = await fetchBarcode(longUrl);
+      const fetchBarcodeResponse = await fetchBarcode(longUrl, accessToken);
       const newRow = {
         id: data.length + 1,
         url: shortUrlResponse,
