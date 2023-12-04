@@ -21,7 +21,7 @@ function App() {
   const [imageUrl, setImageUrl] = useState([]);
 
   const accessToken = useSelector((state) => state.auth.accessToken);
-  console.log('accessToken:', accessToken);
+  console.log(accessToken);
 
   const handleSubmit = async () => {
     try{

@@ -9,8 +9,8 @@ function Login(){
 
     const onSuccess= (res) =>{
         console.log("Login Success! User: ", res.profileObj);
-        dispatch(setAccessToken(res.accessToken));
-        console.log('accessToken:', res.accessToken); 
+        dispatch(setAccessToken(res.tokenObj.id_token));
+        console.log('accessToken:', res.tokenObj.id_token); 
     }
     const onError= (res) =>{
         console.log("Login Failed! res: ", res);

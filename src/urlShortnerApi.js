@@ -10,7 +10,7 @@ export const urlShortenerApi = async(longUrl, accessToken) => {
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
         // "Access-Control-Allow-Origin": "*",
-        'Authorization': `Bearer ${accessToken}` 
+        'Authorization': `Bearer${accessToken}` 
       },
       body: new URLSearchParams({
         'longurl': JSON.stringify({ longUrl }),
