@@ -7,7 +7,7 @@ export const fetchBarcode = async (longUrl, accessToken) => {
         method: 'GET',
   headers: {
 
-    'Authorization': `Bearer${accessToken}` 
+    'Authorization': `Bearer ${accessToken}` 
   }});
       if (response.ok) {
         const blob = await response.blob();
