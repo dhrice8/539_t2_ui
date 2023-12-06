@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { urlShortenerApi } from './urlShortnerApi';
 import { fetchBarcode } from './fetchBarcode';
+import { urlLongApi } from './urlLongApi';
 import { GoogleLogin } from 'react-google-login';
 import { useHistory } from 'react-router-dom';
 import "./login"
@@ -15,6 +16,7 @@ const clientId = "904917579142-vc1lop92kollnuspfcvdpk26e87kb5u2.apps.googleuserc
 function App() {
   const [longUrl, setLongUrl] = useState('');
   const [shortUrl, setShortUrl] = useState('');
+  const [x, setX] = useState('');
   const [showDashboard, setShowDashboard] = useState(false);
   const [data, setData] = useState([]); 
   const [imageUrl, setImageUrl] = useState([]);
@@ -25,6 +27,7 @@ function App() {
       setShortUrl(shortUrlResponse);
 
       const fetchBarcodeResponse = await fetchBarcode(longUrl);
+      
       const newRow = {
         id: data.length + 1,
         url: shortUrlResponse,
@@ -100,7 +103,9 @@ function App() {
           <button className="btn btn-secondary" onClick={handleSubmit}>Shorten</button>
         </div>
       </div>
-      {shortUrl && <div className="text-center mt-3"><div className='short-url'>Short URL:</div> <a href={shortUrl}>{shortUrl}</a></div>}
+      {/* change made here */}
+      {shortUrl && <div className="text-center mt-3"><div className='short-url'>Short URL:</div> <a href={longUrl} target="_blank">{shortUrl}</a></div>}
+      
       
       <button className="btn btn-secondary mt-3" onClick={toggleDashboard}>
         {showDashboard ? 'Hide' : 'Show'} Dashboard
@@ -126,7 +131,7 @@ function App() {
                   <td><a href={row.url}>{row.url}</a></td>
                   <td>{row.latency}</td>
                   <td>{row.clickRate}</td>
-                  <td><img src={row.qrCode}></img></td>
+                  <td><img src={'data:image/png;base64,'+row.qrCode}></img></td>
                 </tr>
               ))}
             </tbody>
