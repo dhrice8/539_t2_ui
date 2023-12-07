@@ -4,8 +4,8 @@ export const fetchBarcode = async (longUrl, accessToken) => {
   try {
     formData.append('longurl', longUrl)
     // const encodedURL = encodeURIComponent(longUrl);
-    const response = await fetch(`http://localhost:8080/api/barcode`, {
-      //const response = await fetch(`https://rice-comp-539-spring-2022.uk.r.appspot.com/api/barcode`, {
+    //const response = await fetch(`http://localhost:8080/api/barcode`, {
+    const response = await fetch(`https://rice-comp-539-spring-2022.uk.r.appspot.com/api/barcode`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
