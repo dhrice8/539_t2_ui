@@ -1,8 +1,8 @@
-Now just first run: npm install
-Then run: npm start
+# Now just first run: npm install
+# Then run: npm start
 
 
-
+#IGNORE the version below!!
 
 # Getting Started with Create React App
 
