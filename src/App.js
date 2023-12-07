@@ -28,14 +28,16 @@ function App() {
   const handleSubmit = async () => {
     try {
       const shortUrlResponse = await urlShortenerApi(longUrl, accessToken);
-      setShortUrl(shortUrlResponse);
+      const shortUrl = shortUrlResponse.shortUrl;
+      const realLatency = shortUrlResponse.latency;
+      setShortUrl(shortUrl);
+      //setShortUrl(shortUrlResponse);
 
       const fetchBarcodeResponse = await fetchBarcode(longUrl, accessToken);
       const newRow = {
         id: data.length + 1,
-        url: shortUrlResponse,
-        //random data
-        latency: `${Math.floor(Math.random() * 100) + 1}ms`,
+        url: shortUrl,
+        latency: `${parseFloat(realLatency).toFixed(2)}ms`,
         clickRate: 1,
         qrCode: fetchBarcodeResponse
       };
