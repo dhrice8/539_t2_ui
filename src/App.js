@@ -49,6 +49,10 @@ function App() {
     }
   };
 
+  const handleLogout = () => {
+    setData([]); // Reset the data
+  };
+
   const toggleDashboard = () => {
     setShowDashboard(!showDashboard);
   };
@@ -88,8 +92,16 @@ function App() {
             <a className="nav-link" >Sign In</a>
           </li> */}
 
-            <Login />
-            <Logout />
+            {/* Conditional rendering based on accessToken */}
+            {!accessToken ? (
+              <li className="nav-item">
+                <Login />
+              </li>
+            ) : (
+              <li className="nav-item">
+                <Logout onLogout={handleLogout} />
+              </li>
+            )}
           </ul>
         </div>
       </nav>
