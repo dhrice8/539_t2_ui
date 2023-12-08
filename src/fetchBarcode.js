@@ -1,6 +1,11 @@
 export const fetchBarcode = async (longUrl) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/barcode/${longUrl}`);
+      const response = await fetch(`http://localhost:8080/api/barcode/${longUrl}`, {
+        method: 'GET',
+  headers: {
+
+    'Authorization': 'Bearer '
+  }});
       if (response.ok) {
         const blob = await response.blob();
         const imageUrl = URL.createObjectURL(blob);
